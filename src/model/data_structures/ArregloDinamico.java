@@ -1,5 +1,7 @@
 package model.data_structures;
 
+import java.util.ArrayList;
+
 /**
  * 2019-01-23
  * Estructura de Datos Arreglo Dinamico de Strings.
@@ -8,19 +10,32 @@ package model.data_structures;
  *
  */
 public class ArregloDinamico implements IArregloDinamico {
+	
+	
+		//-----------------
+		// ATRIBUTOS
+		//-----------------
+	
 		/**
 		 * Capacidad maxima del arreglo
 		 */
         private int tamanoMax;
+        
 		/**
 		 * Numero de elementos presentes en el arreglo (de forma compacta desde la posicion 0)
 		 */
         private int tamanoAct;
+        
         /**
-         * Arreglo de elementos de tamaNo maximo
+         * Arreglo de elementos de tamaNo maximo (tamanoMax)
          */
         private String elementos[ ];
 
+        
+		//-----------------
+		// CONSTRUCTOR
+		//-----------------
+        
         /**
          * Construir un arreglo con la capacidad maxima inicial.
          * @param max Capacidad maxima inicial
@@ -30,7 +45,12 @@ public class ArregloDinamico implements IArregloDinamico {
                elementos = new String[max];
                tamanoMax = max;
                tamanoAct = 0;
+               
         }
+		
+		//-----------------
+		// METODOS
+		//-----------------
         
 		public void agregar( String dato )
         {
@@ -58,20 +78,43 @@ public class ArregloDinamico implements IArregloDinamico {
 		}
 
 		public String darElemento(int i) {
-			// TODO implementar
-			return null;
+			
+			return elementos[i];
+			
 		}
 
 		public String buscar(String dato) {
-			// TODO implementar
-			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
+			
+			for(int i =0; i< tamanoAct; i ++){
+				
+				if(elementos[i].compareTo(dato)==0) {
+					
+					return elementos[i];
+				}
+			}
 			return null;
 		}
-
+		
 		public String eliminar(String dato) {
-			// TODO implementar
-			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
-			return null;
-		}
+			
+			String eliminado = null;
+			
+			for(int i=0; i < tamanoAct; i++) {		// accede a la estructura
+				
+				if(elementos[i].compareTo(dato)==0) { //compara los elementos buscando el dato.
+					
+					eliminado = elementos[i];
+					elementos[i] = null;			// lo elimina
+					
+					for(int j=i+1; j < tamanoAct ; j++) { // reorganiza para compactar los datos.
+						
+						elementos[j-1] = elementos[j]; 
+					}
+					tamanoAct --;
+				}
+			}
 
+			return eliminado;
+		}
+		
 }

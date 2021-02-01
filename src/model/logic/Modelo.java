@@ -8,10 +8,21 @@ import model.data_structures.IArregloDinamico;
  *
  */
 public class Modelo {
+	
+	//--------------
+	// ATRIBUTOS
+	//--------------
+	
 	/**
 	 * Atributos del modelo del mundo
 	 */
 	private IArregloDinamico datos;
+	
+	
+	
+	//--------------
+	// CONSTRUCTORES
+	//--------------
 	
 	/**
 	 * Constructor del modelo del mundo con capacidad predefinida
@@ -29,6 +40,10 @@ public class Modelo {
 	{
 		datos = new ArregloDinamico(capacidad);
 	}
+	
+	//--------------
+	// METODOS
+	//--------------
 	
 	/**
 	 * Servicio de consulta de numero de elementos presentes en el modelo 

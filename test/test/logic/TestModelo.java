@@ -30,25 +30,31 @@ public class TestModelo {
 
 	@Test
 	public void testDarTamano() {
-		// TODO
+		
+		assertTrue(modelo.darTamano()==0);
 	}
 
 	@Test
 	public void testAgregar() {
-		// TODO Completar la prueba
+		
+		modelo.agregar(""+0);
+		assertTrue(modelo.darTamano()==1);
 	}
+	
 
 	@Test
 	public void testBuscar() {
 		setUp2();
-		// TODO Completar la prueba
+		assertTrue(modelo.buscar(""+5).compareTo(""+5)==0);
+		
 	}
 
 	@Test
 	public void testEliminar() {
-		setUp2();
-		// TODO Completar la prueba
 		
+		setUp2();
+		assertTrue(modelo.eliminar(""+5).compareTo(""+5)==0);
+		assertTrue(modelo.darTamano()== 99);
 	}
 
 }
